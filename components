@@ -1,0 +1,33 @@
+export default function Header(){
+  return (
+    <header className="bg-gray-100 p-4 flex justify-between items-center">
+      <h1 className="text-xl font-bold">iDeviceMarket</h1>
+      <nav>
+        <a href="/" className="mr-4 hover:text-blue-600">Home</a>
+        <a href="/cart" className="hover:text-blue-600">Cart</a>
+      </nav>
+    </header>
+  );
+}
+
+
+
+import Link from 'next/link';
+
+export default function ProductCard({product}){
+  const price = product.conditions[0].price; // show first condition price for card
+  return (
+    <div className="border p-4 rounded shadow hover:shadow-lg transition">
+      <img src={product.images[0]} alt={product.name} className="w-full h-48 object-cover"/>
+      <h2 className="font-semibold mt-2">{product.name}</h2>
+      <p className="text-gray-600">From R{price}</p>
+      <Link href={`/product/${product.id}`}>
+        <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded w-full">View</button>
+      </Link>
+    </div>
+  );
+}
+
+components/
+├── Header.jsx        ← Top navigation bar
+└── ProductCard.jsx   ← Product preview card for homepage
